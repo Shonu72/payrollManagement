@@ -197,6 +197,7 @@ public class login extends JFrame implements ActionListener {
             if(rs.next())
             {
                 new dashboard().setVisible(true);
+                dispose();
             }
             else
             {

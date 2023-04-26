@@ -2,12 +2,29 @@ import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.event.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Update_Employee extends JFrame implements ActionListener,ItemListener{
 
     JLabel l1,l2,l3,l4,l5,l6,l7,emp;
     JTextField t1,t2,t3,t4,t5,t6,t7;
     JButton b1,b2;
     Choice c1,c2;
+
+
+    public static boolean isValidEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public static boolean isValidMobileNo(String str) {
+        Pattern ptrn = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+        Matcher match = ptrn.matcher(str);
+        return (match.find() && match.group().equals(str));
+    }
 
     Update_Employee()
     {
@@ -114,17 +131,22 @@ public class Update_Employee extends JFrame implements ActionListener,ItemListen
             String c=t5.getText();
             String e=t6.getText();
             String p=t7.getText();
-            String qry = " update employee set name='"+n+"',gender='"+g+"',address='"+a+"',state='"+s+"',city='"+c+"',email='"+e+"',phone='"+p+"' where id="+c2.getSelectedItem();
-            try
-            {
-                Conn c1= new Conn();
-                c1.s.executeUpdate(qry);
-                JOptionPane.showMessageDialog(null, "Employee Updated");
-                this.setVisible(false);
-            }
-            catch(Exception ee)
-            {
-                ee.printStackTrace();
+            if (n.equals("") || a.equals("") || s.equals("") || c.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill all details...");
+            } else if (!isValidEmail(e)) {
+                JOptionPane.showMessageDialog(null, "Invalid Email ");
+            } else if (!isValidMobileNo(p)) {
+                JOptionPane.showMessageDialog(null, "Invalid Phone....");
+            } else {
+                String qry = " update employee set name='" + n + "',gender='" + g + "',address='" + a + "',state='" + s + "',city='" + c + "',email='" + e + "',phone='" + p + "' where id=" + c2.getSelectedItem();
+                try {
+                    Conn c1 = new Conn();
+                    c1.s.executeUpdate(qry);
+                    JOptionPane.showMessageDialog(null, "Employee Updated");
+                    this.setVisible(false);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
             }
         }
         if(ae.getSource()==b2)
