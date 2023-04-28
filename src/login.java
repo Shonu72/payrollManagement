@@ -203,7 +203,7 @@ public class login extends JFrame implements ActionListener {
             {
                 JOptionPane.showMessageDialog(null, "Something went wrong");
                 new dashboard().setVisible(false);
-                dispose();
+//                dispose();
             }
         }
         catch(HeadlessException | SQLException e) {

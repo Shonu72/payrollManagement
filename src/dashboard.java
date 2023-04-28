@@ -72,13 +72,21 @@ public class dashboard extends JFrame implements ActionListener {
         s3.setFont(new Font("monospaced",Font.PLAIN,12));
         s3.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/EXPENSE.png")));
 
+        JMenuItem p2=new JMenuItem("List Attendance");
+        p2.setForeground(Color.blue);
+        p2.setFont(new Font("monospaced",Font.PLAIN,12));
+        p2.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/empreport.png")));
+
+
         edit.add(s1);
         edit.add(s2);
         edit.add(s3);
+        edit.add(p2);
 
         s1.addActionListener(this);
         s3.addActionListener(this);
         s2.addActionListener(this);
+        p2.addActionListener(this);
 
         //-----------------REPORTS----------------------
         JMenu rep= new JMenu("Reports");
@@ -130,12 +138,14 @@ public class dashboard extends JFrame implements ActionListener {
             new Update_salary().setVisible(true);
         else if(msg.equals("Take Attendance"))
             new TakeAttendance().setVisible(true);
-        else if(msg.equals("Exit"))
-            dispose();
+        else if(msg.equals("View Attendance"))
+            new view_attendance().setVisible(true);
         else if(msg.equals("Generate payslip"))
             new pay_slip().setVisible(true);
-//        else if(msg.equals("List Attendance"))
-//            new List_Attendance().setVisible(true);
+        else if(msg.equals("Exit"))
+            dispose();
+
+
     }
     public static void main(String[] args) {
         new dashboard().setVisible(true);
