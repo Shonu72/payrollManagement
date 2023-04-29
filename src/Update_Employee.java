@@ -3,14 +3,22 @@ import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.event.*;
+
 import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Update_Employee extends JFrame implements ActionListener,ItemListener{
+
 
 public class Update_Employee extends JFrame implements ActionListener, ItemListener {
+
 
     JLabel l1, l2, l3, l4, l5, l6, l7, emp;
     JTextField t1, t2, t3, t4, t5, t6, t7;
     JButton b1, b2;
     Choice c1, c2;
+
 
     public static boolean isValidEmail(String email) {
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
@@ -25,7 +33,10 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         return (match.find() && match.group().equals(str));
     }
 
+
     Update_Employee() {
+    Update_Employee()
+{
         super("Update Employee");
         setLayout(null);
 
@@ -117,6 +128,7 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         setVisible(true);
     }
 
+
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == b1) {
             String n = t1.getText();
@@ -137,6 +149,25 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
 
                 String qry = " update employee set name='" + n + "',gender='" + g + "',address='" + a + "',state='" + s
                         + "',city='" + c + "',email='" + e + "',phone='" + p + "' where id=" + c2.getSelectedItem();
+    public void actionPerformed(ActionEvent ae)
+    {
+        if(ae.getSource()==b1)
+        {
+            String n=t1.getText();
+            String g=c1.getSelectedItem();
+            String a=t3.getText();
+            String s=t4.getText();
+            String c=t5.getText();
+            String e=t6.getText();
+            String p=t7.getText();
+            if (n.equals("") || a.equals("") || s.equals("") || c.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill all details...");
+            } else if (!isValidEmail(e)) {
+                JOptionPane.showMessageDialog(null, "Invalid Email ");
+            } else if (!isValidMobileNo(p)) {
+                JOptionPane.showMessageDialog(null, "Invalid Phone....");
+            } else {
+                String qry = " update employee set name='" + n + "',gender='" + g + "',address='" + a + "',state='" + s + "',city='" + c + "',email='" + e + "',phone='" + p + "' where id=" + c2.getSelectedItem();
                 try {
                     Conn c1 = new Conn();
                     c1.s.executeUpdate(qry);
