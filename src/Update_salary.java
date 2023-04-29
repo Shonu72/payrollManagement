@@ -127,9 +127,6 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
             } catch (Exception ee) {
                 ee.printStackTrace();
             }
-
-
-
         }
     }
     public void itemStateChanged(ItemEvent ie)
