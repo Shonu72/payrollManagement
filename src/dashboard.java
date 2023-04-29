@@ -1,153 +1,205 @@
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
 
-public class dashboard extends JFrame implements ActionListener {
+public class dashboard extends javax.swing.JFrame {
 
-    dashboard()
-    {
-        setSize(1000,600);
-        getContentPane().setBackground(Color.WHITE);
-
-        ImageIcon i1= new ImageIcon(ClassLoader.getSystemResource("icon/payroll.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(1200,700, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel l1=new JLabel(i3);
-        add(l1);
-
-        JMenuBar mb = new JMenuBar();
-        setJMenuBar(mb);
-
-        //-----------MASTER----------------------
-        JMenu m1= new JMenu("Menu");
-        m1.setForeground(Color.blue);
-
-
-        JMenuItem t1=new JMenuItem("New Employee");
-        t1.setForeground(Color.blue);
-        t1.setFont(new Font("monospaced",Font.PLAIN,12));
-        t1.setIcon(new ImageIcon(ClassLoader.getSystemResource("Icons/New.png")));
-
-        JMenuItem t3=new JMenuItem("Salary");
-
-        t3.setForeground(Color.blue);
-        t3.setFont(new Font("monospaced",Font.PLAIN,12));
-        t3.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/schedreport.PNG")));
-
-        JMenuItem t4=new JMenuItem("List Employee");
-
-        t4.setForeground(Color.blue);
-        t4.setFont(new Font("monospaced",Font.PLAIN,12));
-        t4.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/newinvoice.png")));
-
-        m1.add(t1);
-        m1.add(t3);
-        m1.add(t4);
-        mb.add(m1);
-
-        t1.addActionListener(this);
-        t3.addActionListener(this);
-        t4.addActionListener(this);
-
-        //-----------------UPDATE----------------------
-        JMenu edit= new JMenu("Update");
-        edit.setForeground(Color.BLUE);
-        mb.add(edit);
-
-        JMenuItem s1=new JMenuItem("Update Salary");
-
-        s1.setForeground(Color.blue);
-        s1.setFont(new Font("monospaced",Font.PLAIN,12));
-        s1.setIcon(new ImageIcon(ClassLoader.getSystemResource("Icons/EditOpen.png")));
-
-        JMenuItem s2=new JMenuItem("Update Employee");
-
-        s2.setForeground(Color.blue);
-        s2.setFont(new Font("monospaced",Font.PLAIN,12));
-        s2.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/empreport.png")));
-
-        JMenuItem s3=new JMenuItem("Take Attendance");
-
-        s3.setForeground(Color.blue);
-        s3.setFont(new Font("monospaced",Font.PLAIN,12));
-        s3.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/EXPENSE.png")));
-
-        JMenuItem p2=new JMenuItem("List Attendance");
-        p2.setForeground(Color.blue);
-        p2.setFont(new Font("monospaced",Font.PLAIN,12));
-        p2.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/empreport.png")));
-
-
-        edit.add(s1);
-        edit.add(s2);
-        edit.add(s3);
-        edit.add(p2);
-
-        s1.addActionListener(this);
-        s3.addActionListener(this);
-        s2.addActionListener(this);
-        p2.addActionListener(this);
-
-        //-----------------REPORTS----------------------
-        JMenu rep= new JMenu("Reports");
-        rep.setForeground(Color.BLUE);
-        mb.add(rep);
-
-        JMenuItem p1=new JMenuItem("Generate payslip");
-
-        p1.setForeground(Color.blue);
-        p1.setFont(new Font("monospaced",Font.PLAIN,12));
-        p1.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/payments.png")));
-
-        rep.add(p1);
-
-        p1.addActionListener(this);
-
-
-        //-----------------EXIT----------------------
-        JMenu m8= new JMenu("Exit");
-        m8.setForeground(Color.RED);
-        mb.add(m8);
-
-        JMenuItem m8i1=new JMenuItem("Exit");
-
-        m8i1.setForeground(Color.BLUE);
-        m8i1.setFont(new Font("monospaced",Font.PLAIN,12));
-        m8i1.setMnemonic('X');
-        m8i1.setIcon(new ImageIcon(ClassLoader.getSystemResource("icon/exit.png")));
-        m8i1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
-
-        m8.add(m8i1);
-
-        m8i1.addActionListener(this);
+    public dashboard() {
+        initComponents();
     }
 
-    public void actionPerformed(ActionEvent ae)
-    {
-        String msg = ae.getActionCommand();
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
 
-        if(msg.equals("New Employee"))
-            new New_Employee().setVisible(true);
-        else if(msg.equals("List Employee"))
-            new List_Employee().setVisible(true);
-        else if(msg.equals("Update Employee"))
-            new Update_Employee().setVisible(true);
-        else if(msg.equals("Salary"))
-            new Salary().setVisible(true);
-        else if(msg.equals("Update Salary"))
-            new Update_salary().setVisible(true);
-        else if(msg.equals("Take Attendance"))
-            new TakeAttendance().setVisible(true);
-        else if(msg.equals("View Attendance"))
-            new view_attendance().setVisible(true);
-        else if(msg.equals("Generate payslip"))
-            new pay_slip().setVisible(true);
-        else if(msg.equals("Exit"))
-            dispose();
+        ListEmp = new javax.swing.JButton();
+        updateSal = new javax.swing.JButton();
+        new_Emp = new javax.swing.JButton();
+        Updt_Emp = new javax.swing.JButton();
+        TakeAtten = new javax.swing.JButton();
+        GenSlip = new javax.swing.JButton();
+        viewAtten = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
+        Salary = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ListEmp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ListEmp.setText("List Employee");
+        ListEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListEmpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 130, 40));
+
+        updateSal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateSal.setText("Update Salary");
+        updateSal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateSalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(updateSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 130, 40));
+
+        new_Emp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        new_Emp.setText("New Employee");
+        new_Emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                new_EmpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(new_Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 130, 40));
+
+        Updt_Emp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Updt_Emp.setText("Update Employee");
+        Updt_Emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Updt_EmpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Updt_Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 130, 40));
+
+        TakeAtten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TakeAtten.setText("Take Attendance");
+        TakeAtten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TakeAttenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TakeAtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 150, 130, 40));
+
+        GenSlip.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        GenSlip.setText("Generate Slip");
+        GenSlip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenSlipActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GenSlip, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 130, 40));
+
+        viewAtten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewAtten.setText("View Attendance");
+        viewAtten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAttenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(viewAtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 130, 40));
+
+        Exit.setBackground(new java.awt.Color(255, 0, 0));
+        Exit.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, 130, 40));
+
+        Salary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Salary.setText("Salary");
+        Salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalaryActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Salary, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 130, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/img3.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 450));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void ListEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListEmpActionPerformed
+        // TODO add your handling code here:
+        new List_Employee().setVisible(true);
+    }//GEN-LAST:event_ListEmpActionPerformed
+
+    private void updateSalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateSalActionPerformed
+        // TODO add your handling code here:
+        new Update_salary().setVisible(true);
+    }//GEN-LAST:event_updateSalActionPerformed
+
+    private void new_EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_EmpActionPerformed
+        // TODO add your handling code here:
+        new New_Employee().setVisible(true);
+    }//GEN-LAST:event_new_EmpActionPerformed
+
+    private void Updt_EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Updt_EmpActionPerformed
+        // TODO add your handling code here:
+        new Update_Employee().setVisible(true);
+    }//GEN-LAST:event_Updt_EmpActionPerformed
+
+    private void TakeAttenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TakeAttenActionPerformed
+        // TODO add your handling code here:
+        new TakeAttendance().setVisible(true);
+    }//GEN-LAST:event_TakeAttenActionPerformed
+
+    private void GenSlipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenSlipActionPerformed
+        // TODO add your handling code here:
+        new pay_slip().setVisible(true);
+    }//GEN-LAST:event_GenSlipActionPerformed
+
+    private void viewAttenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAttenActionPerformed
+        // TODO add your handling code here:
+        new view_attendance().setVisible(true);
+    }//GEN-LAST:event_viewAttenActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_ExitActionPerformed
+
+    private void SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalaryActionPerformed
+        // TODO add your handling code here:
+        new Salary().setVisible(true);
+    }//GEN-LAST:event_SalaryActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new dashboard().setVisible(true);
+            }
+        });
     }
-    public static void main(String[] args) {
-        new dashboard().setVisible(true);
-    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Exit;
+    private javax.swing.JButton GenSlip;
+    private javax.swing.JButton ListEmp;
+    private javax.swing.JButton Salary;
+    private javax.swing.JButton TakeAtten;
+    private javax.swing.JButton Updt_Emp;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton new_Emp;
+    private javax.swing.JButton updateSal;
+    private javax.swing.JButton viewAtten;
+    // End of variables declaration//GEN-END:variables
 }

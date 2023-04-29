@@ -15,6 +15,8 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
         setLayout(null);
 
         c2=new Choice();
+        c2.setBounds(160, 40, 200, 25);
+
         try
         {
             Conn c= new Conn();
@@ -27,45 +29,43 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
         }
         catch(Exception e){}
 
-        JLabel emp=new JLabel("Select Empno");
-        emp.setBounds(20,20,100,20);
+        JLabel emp=new JLabel("Select Emp no");
+        emp.setBounds(40, 40, 100, 20);
         add(emp);
-
-        c2.setBounds(120,20,200,20);
         add(c2);
 
         l1=new JLabel("HRA");
         t1=new JTextField(15);
-        l1.setBounds(20,60,100,20);
-        t1.setBounds(120,60,200,20);
+        l1.setBounds(40, 90, 100, 25);
+        t1.setBounds(160, 90, 200, 25);
         add(l1);
         add(t1);
 
         l3=new JLabel("DA");
         t3=new JTextField(15);
-        l3.setBounds(20,100,100,20);
-        t3.setBounds(120,100,200,20);
+        l3.setBounds(40, 140, 100, 25);
+        t3.setBounds(160, 140, 200, 25);
         add(l3);
         add(t3);
 
         l4=new JLabel("MED");
         t4=new JTextField(15);
-        l4.setBounds(20,140,100,20);
-        t4.setBounds(120,140,200,20);
+        l4.setBounds(40, 190, 100, 25);
+        t4.setBounds(160, 190, 200, 25);
         add(l4);
         add(t4);
 
         l5=new JLabel("PF");
         t5=new JTextField(15);
-        l5.setBounds(20,180,100,20);
-        t5.setBounds(120,180,200,20);
+        l5.setBounds(40, 240, 100, 25);
+        t5.setBounds(160, 240, 200, 25);
         add(l5);
         add(t5);
 
         l6=new JLabel("Basic Salary");
         t6=new JTextField(15);
-        l6.setBounds(20,220,100,20);
-        t6.setBounds(120,220,200,20);
+        l6.setBounds(40, 290, 100, 25);
+        t6.setBounds(160, 290, 200, 25);
         add(l6);
         add(t6);
 
@@ -78,8 +78,8 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
         b2.setBackground(Color.BLACK);
         b2.setForeground(Color.WHITE);
 
-        b1.setBounds(40,280,100,20);
-        b2.setBounds(200,280,100,20);
+        b1.setBounds(40, 350, 100, 30);
+        b2.setBounds(200, 350, 100, 30);
         add(b1);
         add(b2);
 
@@ -120,7 +120,8 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
         {
             try {
                 Conn c1 = new Conn();
-                c1.s.executeQuery("delete from salary where id=" + c2.getSelectedItem());
+                String delqry = "delete from salary where id=" + c2.getSelectedItem();
+                c1.s.executeUpdate(delqry);
                 JOptionPane.showMessageDialog(null, "Salary Deleted");
                 this.setVisible(false);
             } catch (Exception ee) {

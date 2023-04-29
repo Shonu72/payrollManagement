@@ -1,21 +1,17 @@
-import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.event.*;
-
-import java.util.regex.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Update_Employee extends JFrame implements ActionListener,ItemListener{
 
 
 public class Update_Employee extends JFrame implements ActionListener, ItemListener {
 
 
-    JLabel l1, l2, l3, l4, l5, l6, l7, emp;
-    JTextField t1, t2, t3, t4, t5, t6, t7;
+    JLabel l1, l2, l3, l4, l5, l6, l7;
+    JTextField t1, t3, t4, t5, t6, t7;
     JButton b1, b2;
     Choice c1, c2;
 
@@ -35,13 +31,12 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
 
 
     Update_Employee() {
-    Update_Employee()
-{
+
         super("Update Employee");
         setLayout(null);
 
         c2 = new Choice();
-        c2.setBounds(160, 40, 200, 20);
+        c2.setBounds(160, 40, 200, 25);
         try {
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from employee");
@@ -52,15 +47,15 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         } catch (Exception e) {
         }
 
-        JLabel emp = new JLabel("Select Empno");
+        JLabel emp = new JLabel("Select Emp no");
         emp.setBounds(40, 40, 100, 20);
         add(emp);
         add(c2);
 
         l1 = new JLabel("Name");
         t1 = new JTextField(15);
-        l1.setBounds(40, 80, 100, 20);
-        t1.setBounds(160, 80, 200, 20);
+        l1.setBounds(40, 80, 100, 25);
+        t1.setBounds(160, 80, 200, 25);
         add(l1);
         add(t1);
 
@@ -69,39 +64,39 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         c1.add("Female");
         c1.add("other");
         l2 = new JLabel("Gender");
-        l2.setBounds(40, 120, 100, 20);
-        c1.setBounds(160, 120, 200, 20);
+        l2.setBounds(40, 120, 100, 25);
+        c1.setBounds(160, 120, 200, 25);
         add(l2);
         add(c1);
         l3 = new JLabel("Address");
         t3 = new JTextField(15);
-        l3.setBounds(40, 160, 100, 20);
-        t3.setBounds(160, 160, 200, 20);
+        l3.setBounds(40, 160, 100, 25);
+        t3.setBounds(160, 160, 200, 25);
         add(l3);
         add(t3);
         l4 = new JLabel("State");
         t4 = new JTextField(15);
-        l4.setBounds(40, 200, 100, 20);
-        t4.setBounds(160, 200, 200, 20);
+        l4.setBounds(40, 200, 100, 25);
+        t4.setBounds(160, 200, 200, 25);
         add(l4);
         add(t4);
         l5 = new JLabel("City");
         t5 = new JTextField(15);
-        l5.setBounds(40, 240, 100, 20);
-        t5.setBounds(160, 240, 200, 20);
+        l5.setBounds(40, 240, 100, 25);
+        t5.setBounds(160, 240, 200, 25);
         add(l5);
         add(t5);
         l6 = new JLabel("Email");
         t6 = new JTextField(15);
-        l6.setBounds(40, 280, 100, 20);
-        t6.setBounds(160, 280, 200, 20);
+        l6.setBounds(40, 280, 100, 25);
+        t6.setBounds(160, 280, 200, 25);
         add(l6);
         add(t6);
 
         l7 = new JLabel("Phone");
         t7 = new JTextField(15);
-        l7.setBounds(40, 320, 100, 20);
-        t7.setBounds(160, 320, 200, 20);
+        l7.setBounds(40, 320, 100, 25);
+        t7.setBounds(160, 320, 200, 25);
         add(l7);
         add(t7);
 
@@ -113,8 +108,8 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         b2.setBackground(Color.BLACK);
         b2.setForeground(Color.WHITE);
 
-        b1.setBounds(40, 400, 100, 20);
-        b2.setBounds(200, 400, 100, 20);
+        b1.setBounds(40, 400, 100, 30);
+        b2.setBounds(200, 400, 100, 30);
         add(b1);
         add(b2);
 
@@ -128,27 +123,6 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         setVisible(true);
     }
 
-
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == b1) {
-            String n = t1.getText();
-            String g = c1.getSelectedItem();
-            String a = t3.getText();
-            String s = t4.getText();
-            String c = t5.getText();
-            String e = t6.getText();
-            String p = t7.getText();
-
-            if (n.equals("") || a.equals("") || s.equals("") || c.equals("")) {
-                JOptionPane.showMessageDialog(null, "Please fill all details...");
-            } else if (!isValidMobileNo(p)) {
-                JOptionPane.showMessageDialog(null, "Phone No Invalid....");
-            } else if (!isValidEmail(e)) {
-                JOptionPane.showMessageDialog(null, "Email Invalid....");
-            } else {
-
-                String qry = " update employee set name='" + n + "',gender='" + g + "',address='" + a + "',state='" + s
-                        + "',city='" + c + "',email='" + e + "',phone='" + p + "' where id=" + c2.getSelectedItem();
     public void actionPerformed(ActionEvent ae)
     {
         if(ae.getSource()==b1)
@@ -181,7 +155,8 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         if (ae.getSource() == b2) {
             try {
                 Conn c1 = new Conn();
-                c1.s.executeQuery("delete from employee where id=" + c2.getSelectedItem());
+                String delqry =  "delete from employee where id=" + c2.getSelectedItem();
+                c1.s.executeUpdate(delqry);
                 JOptionPane.showMessageDialog(null, "Employee Deleted");
                 this.setVisible(false);
             } catch (Exception ee) {

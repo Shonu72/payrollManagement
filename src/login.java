@@ -76,7 +76,7 @@ public class login extends JFrame implements ActionListener {
         jButton2.setBackground(new java.awt.Color(0, 102, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Reset");
+        jButton2.setText("Cancel");
         jButton2.addActionListener(this);
 
 
@@ -202,8 +202,8 @@ public class login extends JFrame implements ActionListener {
             else
             {
                 JOptionPane.showMessageDialog(null, "Something went wrong");
-                new dashboard().setVisible(false);
-//                dispose();
+//                new dashboard().setVisible(false);
+                dispose();
             }
         }
         catch(HeadlessException | SQLException e) {
