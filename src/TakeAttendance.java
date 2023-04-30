@@ -60,11 +60,13 @@ public class TakeAttendance extends JFrame implements ActionListener{
         add(b1);
         add(b2);
         b1.addActionListener(this);
-        b1.setBackground(Color.BLACK);
+        b1.setBackground(Color.blue);
         b1.setForeground(Color.WHITE);
+
         b2.addActionListener(this);
-        b2.setBackground(Color.BLACK);
+        b2.setBackground(Color.red);
         b2.setForeground(Color.WHITE);
+
         b1.setBounds(50, 200, 100, 30);
         b2.setBounds(250, 200, 100, 30);
         setSize(450,450);

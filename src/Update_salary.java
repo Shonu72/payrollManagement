@@ -103,6 +103,7 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
             String pf=t5.getText();
             String basic=t6.getText();
 
+
             String qry = "update salary set hra="+hra+",da="+da+",med="+med+",pf="+pf+",basic="+basic+" where id="+c2.getSelectedItem();
             try
             {
@@ -116,16 +117,25 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
                 ee.printStackTrace();
             }
         }
-        if(ae.getSource()==b2)
-        {
-            try {
-                Conn c1 = new Conn();
-                String delqry = "delete from salary where id=" + c2.getSelectedItem();
-                c1.s.executeUpdate(delqry);
-                JOptionPane.showMessageDialog(null, "Salary Deleted");
-                this.setVisible(false);
-            } catch (Exception ee) {
-                ee.printStackTrace();
+        if(ae.getSource()==b2) {
+            String hra = t1.getText();
+            String id = c2.getSelectedItem();
+            String da = t3.getText();
+            String med = t4.getText();
+            String pf = t5.getText();
+            String basic = t6.getText();
+            if (hra.equals("") || id.equals("") || da.equals("") || med.equals("") || pf.equals("") || basic.equals("") ) {
+                JOptionPane.showMessageDialog(null, "OOPS! You haven't selected employee details ");
+            } else {
+                try {
+                    Conn c1 = new Conn();
+                    String delqry = "delete from salary where id=" + c2.getSelectedItem();
+                    c1.s.executeUpdate(delqry);
+                    JOptionPane.showMessageDialog(null, "Salary Deleted");
+                    this.setVisible(false);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
             }
         }
     }

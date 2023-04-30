@@ -13,7 +13,7 @@ public class view_attendance extends JFrame implements ActionListener{
     view_attendance()
     {
         super("View Employee Attendance");
-        setSize(800,400);
+        setSize(800,300);
         setLocation(450,200);
 
         try
@@ -27,7 +27,6 @@ public class view_attendance extends JFrame implements ActionListener{
                 d[i][j++]=rs.getString("date");
                 d[i][j++]=rs.getString("first");
                 d[i][j++]=rs.getString("second");
-
                 i++;
                 j=0;
             }

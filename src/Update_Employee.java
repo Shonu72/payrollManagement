@@ -101,15 +101,15 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
         add(t7);
 
         b1 = new JButton("Update");
-        b1.setBackground(Color.BLACK);
+        b1.setBackground(Color.blue);
         b1.setForeground(Color.WHITE);
 
         b2 = new JButton("Delete");
-        b2.setBackground(Color.BLACK);
-        b2.setForeground(Color.WHITE);
+        b2.setBackground(Color.red);
+        b2.setForeground(Color.white);
 
-        b1.setBounds(40, 400, 100, 30);
-        b2.setBounds(200, 400, 100, 30);
+        b1.setBounds(70, 400, 100, 30);
+        b2.setBounds(230, 400, 100, 30);
         add(b1);
         add(b2);
 
@@ -153,14 +153,26 @@ public class Update_Employee extends JFrame implements ActionListener, ItemListe
             }
         }
         if (ae.getSource() == b2) {
-            try {
-                Conn c1 = new Conn();
-                String delqry =  "delete from employee where id=" + c2.getSelectedItem();
-                c1.s.executeUpdate(delqry);
-                JOptionPane.showMessageDialog(null, "Employee Deleted");
-                this.setVisible(false);
-            } catch (Exception ee) {
-                ee.printStackTrace();
+            String n = t1.getText();
+            String g = c1.getSelectedItem();
+            String a = t3.getText();
+            String s = t4.getText();
+            String c = t5.getText();
+            String e = t6.getText();
+            String p = t7.getText();
+            if (n.equals("") || a.equals("") || s.equals("") || c.equals("")) {
+                JOptionPane.showMessageDialog(null, "OOPS! You haven't selected employee details ");
+            } else {
+                try {
+                    Conn c1 = new Conn();
+
+                    String delqry = "delete from employee where id=" + c2.getSelectedItem();
+                    c1.s.executeUpdate(delqry);
+                    JOptionPane.showMessageDialog(null, "Employee Deleted");
+                    this.setVisible(false);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
             }
         }
     }

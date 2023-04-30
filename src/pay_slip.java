@@ -1,108 +1,115 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.awt.event.*;
-public class pay_slip extends JFrame implements ActionListener{
+
+public class pay_slip extends JFrame implements ActionListener {
 
     Choice c1;
     JButton b1;
-    JTextArea t1;
+    JTable table;
 
-    pay_slip()
-    {
+    pay_slip() {
         super("Pay Slip");
-        setSize(1000,600);
-        setLocation(450,200);
+        setSize(800, 400);
+        setLocation(450, 200);
         setLayout(new BorderLayout());
-        c1=new Choice();
-        try
-        {
-            Conn c= new Conn();
-            ResultSet rs=c.s.executeQuery("select * from employee");
 
-            while(rs.next())
-            {
+        // Adding the choice component to select the employee ID
+        c1 = new Choice();
+        try {
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from employee");
+
+            while (rs.next()) {
                 c1.add(rs.getString("id"));
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        JPanel p1=new JPanel();
+        JPanel p1 = new JPanel();
         p1.add(new JLabel("Select ID"));
         p1.add(c1);
-        add(p1,"North");
+        add(p1, "North");
 
-        t1=new JTextArea(30,80);
-        JScrollPane jsp = new JScrollPane(t1);
+        // Creating a table to display the pay slip
+        table = new JTable();
+        table.setBounds(30, 40, 200, 300);
+        table.setBackground(Color.lightGray);
+        table.setFont(new Font("Arial", Font.PLAIN, 15));
+        table.setRowHeight(30);
 
-        Font f1=new Font("arial",Font.BOLD,20);
-        t1.setFont(f1);
+        JScrollPane sp = new JScrollPane(table);
+        add(sp, "Center");
 
-        b1=new JButton("Generate a Pay slip");
-        add(b1,"South");
-        add(jsp,"Center");
+        // Adding the button to generate the pay slip
+        b1 = new JButton("Generate a Pay slip");
+        add(b1, "South");
 
         b1.addActionListener(this);
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent ae)
-    {
-        try
-        {
-            Conn c= new Conn();
-            ResultSet rs=c.s.executeQuery("select * from employee where id="+c1.getSelectedItem());
+    public void actionPerformed(ActionEvent ae) {
+        try {
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from employee where id=" + c1.getSelectedItem());
             rs.next();
             String name = rs.getString("name");
             rs.close();
 
-            rs=c.s.executeQuery("select * from salary where id="+c1.getSelectedItem());
-            double gross=0;
-            double net=0;
+            rs = c.s.executeQuery("select * from salary where id=" + c1.getSelectedItem());
 
-            java.util.Date d1= new java.util.Date();
-            int month=d1.getMonth();
-            t1.setText("----------------------- PAY SLIP FOR THE MONTH OF "+month+" ,2023 -------------------");
-            t1.append("\n");
+            String[] columns = {"Description", "Amount (in Rs.)"};
+            String[][] data = new String[7][2];
 
-            if(rs.next())
-            {
-                t1.append("\n        Employee ID : "+rs.getString("id"));
-                t1.append("\n        Employee Name : "+name);
+            double gross = 0;
+            double net = 0;
+            long millis = System.currentTimeMillis();
+            java.sql.Date date = new java.sql.Date(millis);
 
-                t1.append("\n---------------------------------------------------\n");
+            data[0][0] = "PAY Date : ";
+            data[0][1] = String.valueOf(date);
+            data[1][0] = "Employee ID ";
+            data[1][1] = c1.getSelectedItem();
+            data[2][0] = "Employee Name";
+            data[2][1] = name;
 
-                double hra= rs.getDouble("hra");
-                t1.append("\n               HRA      : "+hra);
-                double da= rs.getDouble("da");
-                t1.append("\n               DA       :"+da);
-                double med= rs.getDouble("med");
-                t1.append("\n               MED      :"+med);
-                double pf= rs.getDouble("pf");
-                t1.append("\n               PF       :"+pf);
-                double basic= rs.getDouble("basic");
-                t1.append("\n               Basic Salary             :"+basic);
+            if (rs.next()) {
+                double hra = rs.getDouble("hra");
+                data[3][0] = "HRA";
+                data[3][1] = String.valueOf(hra);
+                double da = rs.getDouble("da");
+                data[4][0] = "DA";
+                data[4][1] = String.valueOf(da);
+                double med = rs.getDouble("med");
+                data[5][0] = "MED";
+                data[5][1] = String.valueOf(med);
+                double pf = rs.getDouble("pf");
+                data[6][0] = "PF";
+                data[6][1] = String.valueOf(pf);
+                double basic = rs.getDouble("basic");
 
-                gross=hra+da+med+pf+basic;
-                net=gross-pf;
-                t1.append("\n---------------------------------------------------\n");
+                gross = hra + da + med + pf + basic;
+                net = gross - pf;
 
-                t1.append("\n           GROSS SALARY:"+gross);
-                t1.append("\n           NET SALARY:"+net);
-                t1.append("\n           Tac   :   2.1 % of gross "+(gross*2.1/100));
-
-                t1.append("\n---------------------------------------------------\n");
-                t1.append("\n\n\n");
+                table.setModel(new DefaultTableModel(data, columns));
+                table.getColumnModel().getColumn(0).setPreferredWidth(200);
+                table.getColumnModel().getColumn(1).setPreferredWidth(200);
             }
-        }
-        catch(Exception ee)
-        {
-            ee.printStackTrace();
+
+            Object[] row = {"Gross Salary", gross};
+            ((DefaultTableModel) table.getModel()).addRow(row);
+            row = new Object[]{"Net Salary", net};
+            ((DefaultTableModel) table.getModel()).addRow(row);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
-        new pay_slip();
+        new pay_slip().setVisible(true);
     }
 }
+
