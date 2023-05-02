@@ -44,7 +44,7 @@ public class pay_slip extends JFrame implements ActionListener {
         add(sp, "Center");
 
         // Adding the button to generate the pay slip
-        b1 = new JButton("Generate a Pay slip");
+        b1 = new JButton("Generate Pay slip");
         add(b1, "South");
 
         b1.addActionListener(this);
