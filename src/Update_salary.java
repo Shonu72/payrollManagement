@@ -71,15 +71,15 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
 
 
         b1=new JButton("Update");
-        b1.setBackground(Color.BLACK);
+        b1.setBackground(Color.blue);
         b1.setForeground(Color.WHITE);
 
         b2=new JButton("Delete");
-        b2.setBackground(Color.BLACK);
+        b2.setBackground(Color.red);
         b2.setForeground(Color.WHITE);
 
-        b1.setBounds(40, 350, 100, 30);
-        b2.setBounds(200, 350, 100, 30);
+        b1.setBounds(70, 360, 100, 30);
+        b2.setBounds(230, 360, 100, 30);
         add(b1);
         add(b2);
 

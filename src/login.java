@@ -184,34 +184,32 @@ public class login extends JFrame implements ActionListener {
      * @param ae
      */
     @Override
-    public void actionPerformed(ActionEvent ae)
-    {
-        try
-        {
-            Conn c1 = new Conn();
-            String u = jTextField1.getText();
-            @SuppressWarnings("deprecation")
-            String v = jPasswordField1.getText();
-            String q="Select * from login where user='"+u+"' and password='"+v+"'";
-            ResultSet rs=c1.s.executeQuery(q);
-            if(rs.next())
-            {
-                new dashboard().setVisible(true);
-                dispose();
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == jButton1) {
+            try {
+                Conn c1 = new Conn();
+                String u = jTextField1.getText();
+                @SuppressWarnings("deprecation")
+                String v = jPasswordField1.getText();
+                String q = "Select * from login where user='" + u + "' and password='" + v + "'";
+                ResultSet rs = c1.s.executeQuery(q);
+                if (rs.next()) {
+                    new dashboard().setVisible(true);
+                    dispose();
+                }
+
+
+            } catch (HeadlessException | SQLException e) {
+                e.printStackTrace();
             }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Something went wrong");
+        }
+
+     if(ae.getSource()==jButton2) {
+
 //                new dashboard().setVisible(false);
-                dispose();
-            }
-        }
-        catch(HeadlessException | SQLException e) {
-            e.printStackTrace();
-        }
+             dispose();
+     }
     }
-
-
     public static void main(String args[]) {
 
         try {

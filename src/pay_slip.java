@@ -98,6 +98,9 @@ public class pay_slip extends JFrame implements ActionListener {
                 table.getColumnModel().getColumn(0).setPreferredWidth(200);
                 table.getColumnModel().getColumn(1).setPreferredWidth(200);
             }
+//            if (rs.wasNull()){
+//                    JOptionPane.showMessageDialog(null, "Something went wrong");
+//            }
 
             Object[] row = {"Gross Salary", gross};
             ((DefaultTableModel) table.getModel()).addRow(row);
