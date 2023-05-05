@@ -177,8 +177,7 @@ public class login extends JFrame implements ActionListener {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
+    }
     /**
      *
      * @param ae
@@ -225,8 +224,6 @@ public class login extends JFrame implements ActionListener {
         //</editor-fold>
         
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new login().setVisible(true);
         });
