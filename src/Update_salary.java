@@ -102,8 +102,6 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
             String med=t4.getText();
             String pf=t5.getText();
             String basic=t6.getText();
-
-
             String qry = "update salary set hra="+hra+",da="+da+",med="+med+",pf="+pf+",basic="+basic+" where id="+c2.getSelectedItem();
             try
             {

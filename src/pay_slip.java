@@ -97,15 +97,18 @@ public class pay_slip extends JFrame implements ActionListener {
                 table.setModel(new DefaultTableModel(data, columns));
                 table.getColumnModel().getColumn(0).setPreferredWidth(200);
                 table.getColumnModel().getColumn(1).setPreferredWidth(200);
-            }
-//            if (rs.wasNull()){
-//                    JOptionPane.showMessageDialog(null, "Something went wrong");
-//            }
 
             Object[] row = {"Gross Salary", gross};
             ((DefaultTableModel) table.getModel()).addRow(row);
             row = new Object[]{"Net Salary", net};
             ((DefaultTableModel) table.getModel()).addRow(row);
+            }else{
+                JOptionPane.showMessageDialog(null, "No record found ");
+                DefaultTableModel dm = (DefaultTableModel)table.getModel();
+                dm.getDataVector().removeAllElements();
+                dm.fireTableDataChanged();
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

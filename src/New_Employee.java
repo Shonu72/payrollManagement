@@ -66,27 +66,22 @@ public class New_Employee extends JFrame implements ActionListener {
         t6.setBounds(160, 290, 200, 25);
         add(l6);
         add(t6);
-
         l7 = new JLabel("Phone");
         t7 = new JTextField(15);
         l7.setBounds(40, 340, 100, 25);
         t7.setBounds(160, 340, 200, 25);
         add(l7);
         add(t7);
-
         b1 = new JButton("Submit");
         b1.setBackground(Color.blue);
         b1.setForeground(Color.WHITE);
-
         b2 = new JButton("Cancel");
         b2.setBackground(Color.red);
         b2.setForeground(Color.WHITE);
-
         b1.setBounds(70, 400, 100, 30);
         b2.setBounds(230, 400, 100, 30);
         add(b1);
         add(b2);
-
         b1.addActionListener(this);
         b2.addActionListener(this);
         setSize(450, 550);
@@ -134,7 +129,6 @@ public class New_Employee extends JFrame implements ActionListener {
             }
         }
     }
-
     public static void main(String[] args) {
         new New_Employee();
     }
