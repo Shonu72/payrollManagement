@@ -130,7 +130,7 @@ public class login extends JFrame implements ActionListener {
         jLabel2.setForeground(new java.awt.Color(153, 153, 255));
         jLabel2.setText("Welcome User");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/payrollLogin.png")))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/payrollLogin.png")))); // NOI18N
 
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
