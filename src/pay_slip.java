@@ -33,7 +33,7 @@ public class pay_slip extends JFrame implements ActionListener {
         p1.add(c1);
         add(p1, "North");
 
-        // Creating a table to display the pay slip
+        // Creating a table to display the payslip
         table = new JTable();
         table.setBounds(30, 40, 200, 300);
         table.setBackground(Color.lightGray);
@@ -43,7 +43,7 @@ public class pay_slip extends JFrame implements ActionListener {
         JScrollPane sp = new JScrollPane(table);
         add(sp, "Center");
 
-        // Adding the button to generate the pay slip
+        // Adding the button to generate the payslip
         b1 = new JButton("Generate Pay slip");
         add(b1, "South");
 
@@ -64,8 +64,8 @@ public class pay_slip extends JFrame implements ActionListener {
             String[] columns = {"Description", "Amount (in Rs.)"};
             String[][] data = new String[7][2];
 
-            double gross = 0;
-            double net = 0;
+            double gross;
+            double net;
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
 

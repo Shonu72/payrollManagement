@@ -1,3 +1,5 @@
+import java.awt.*;
+import java.util.Objects;
 
 public class dashboard extends javax.swing.JFrame {
 
@@ -22,89 +24,53 @@ public class dashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ListEmp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ListEmp.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
         ListEmp.setText("List Employee");
-        ListEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListEmpActionPerformed(evt);
-            }
-        });
+        ListEmp.addActionListener(this::ListEmpActionPerformed);
         getContentPane().add(ListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 130, 40));
 
-        updateSal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        updateSal.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
         updateSal.setText("Update Salary");
-        updateSal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateSalActionPerformed(evt);
-            }
-        });
+        updateSal.addActionListener(this::updateSalActionPerformed);
         getContentPane().add(updateSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 130, 40));
 
-        new_Emp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        new_Emp.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
         new_Emp.setText("New Employee");
-        new_Emp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new_EmpActionPerformed(evt);
-            }
-        });
+        new_Emp.addActionListener(this::new_EmpActionPerformed);
         getContentPane().add(new_Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 130, 40));
 
-        Updt_Emp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Updt_Emp.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
         Updt_Emp.setText("Update Employee");
-        Updt_Emp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Updt_EmpActionPerformed(evt);
-            }
-        });
+        Updt_Emp.addActionListener(this::Updt_EmpActionPerformed);
         getContentPane().add(Updt_Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 130, 40));
 
-        TakeAtten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TakeAtten.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
         TakeAtten.setText("Take Attendance");
-        TakeAtten.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TakeAttenActionPerformed(evt);
-            }
-        });
+        TakeAtten.addActionListener(this::TakeAttenActionPerformed);
         getContentPane().add(TakeAtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 150, 130, 40));
 
         GenSlip.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         GenSlip.setText("Generate Slip");
-        GenSlip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenSlipActionPerformed(evt);
-            }
-        });
+        GenSlip.addActionListener(this::GenSlipActionPerformed);
         getContentPane().add(GenSlip, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 130, 40));
 
         viewAtten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         viewAtten.setText("View Attendance");
-        viewAtten.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAttenActionPerformed(evt);
-            }
-        });
+        viewAtten.addActionListener(this::viewAttenActionPerformed);
         getContentPane().add(viewAtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 130, 40));
 
         Exit.setBackground(new java.awt.Color(255, 0, 0));
         Exit.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitActionPerformed(evt);
-            }
-        });
+        Exit.addActionListener(this::ExitActionPerformed);
         getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, 130, 40));
 
         Salary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Salary.setText("Salary");
-        Salary.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalaryActionPerformed(evt);
-            }
-        });
+        Salary.addActionListener(this::SalaryActionPerformed);
         getContentPane().add(Salary, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 130, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/img3.jpeg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/img3.jpeg")))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 450));
 
         pack();
@@ -158,7 +124,7 @@ public class dashboard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

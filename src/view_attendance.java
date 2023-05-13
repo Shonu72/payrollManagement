@@ -6,8 +6,8 @@ public class view_attendance extends JFrame implements ActionListener{
 
     JTable j1;
     JButton b1;
-    String h[]={"Employee id","Date Time","First Half","Second Half"};
-    String d[][]=new String[15][4];
+    String[] h ={"Employee id","Date Time","First Half","Second Half"};
+    String[][] d =new String[15][4];
     int i=0,j=0;
 
     view_attendance()
@@ -45,7 +45,7 @@ public class view_attendance extends JFrame implements ActionListener{
     {
         try{
             j1.print();
-        }catch(Exception e){}
+        }catch(Exception ignored){}
     }
     public static void main(String[] args) {
 

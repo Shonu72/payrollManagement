@@ -4,8 +4,8 @@ import java.sql.*;
 import java.awt.event.*;
 public class Update_salary extends JFrame implements ActionListener,ItemListener{
 
-    JLabel l1,l2,l3,l4,l5,l6,l7;
-    JTextField t1,t2,t3,t4,t5,t6,t7;
+    JLabel l1,l3,l4,l5,l6;
+    JTextField t1,t3,t4,t5,t6;
     JButton b1,b2;
     Choice c2;
 
@@ -27,7 +27,9 @@ public class Update_salary extends JFrame implements ActionListener,ItemListener
                 c2.add(rs.getString("id"));
             }
         }
-        catch(Exception e){}
+        catch(Exception e) {
+            e.printStackTrace();
+        }
 
         JLabel emp=new JLabel("Select Emp no");
         emp.setBounds(40, 40, 100, 20);

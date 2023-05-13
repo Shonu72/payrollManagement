@@ -6,8 +6,8 @@ public class List_Employee extends JFrame implements ActionListener{
 
     JTable j1;
     JButton b1;
-    String h[]={"Emp id","Name","Gender","Address","State","City","Email","Phone"};
-    String d[][]=new String[20][8];
+    String[] h ={"Emp id","Name","Gender","Address","State","City","Email","Phone"};
+    String[][] d =new String[20][8];
     int i=0,j=0;
 
     List_Employee()
@@ -53,7 +53,9 @@ public class List_Employee extends JFrame implements ActionListener{
     {
         try{
             j1.print();
-        }catch(Exception e){}
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
     public static void main(String[] args) {
 

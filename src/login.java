@@ -1,43 +1,33 @@
-import java.awt.HeadlessException;
+import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
 import java.awt.event.*;
 import java.util.Objects;
 
-@SuppressWarnings("serial")
 public class login extends JFrame implements ActionListener {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private keeptoo.KGradientPanel kGradientPanel1;
 
     public login() {
         initComponents();
     }
-    @SuppressWarnings("unchecked")
 
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
-        jPanel1 = new javax.swing.JPanel();
+        keeptoo.KGradientPanel kGradientPanel1 = new keeptoo.KGradientPanel();
+        JPanel jPanel1 = new JPanel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        JLabel jLabel3 = new JLabel();
+        JLabel jLabel4 = new JLabel();
+        JLabel jLabel5 = new JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        JLabel jLabel1 = new JLabel();
+        JLabel jLabel2 = new JLabel();
+        JLabel jLabel6 = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,26 +37,26 @@ public class login extends JFrame implements ActionListener {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14)); // NOI18N
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14)); // NOI18N
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(12, 91, 160)));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("Enter Username:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("<html> Login</html>");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 153, 255));
         jLabel5.setText("Enter Password:");
 
         jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Submit");
 //        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 102, 255)));
@@ -74,7 +64,7 @@ public class login extends JFrame implements ActionListener {
 
 
         jButton2.setBackground(new java.awt.Color(0, 102, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        jButton2.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 14));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cancel");
         jButton2.addActionListener(this);
@@ -122,11 +112,11 @@ public class login extends JFrame implements ActionListener {
                                 .addGap(32, 32, 32))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("<html>\nEmployee Payroll\n<br>\nManagement System\n</html>");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 255));
         jLabel2.setText("Welcome User");
 
@@ -180,7 +170,6 @@ public class login extends JFrame implements ActionListener {
     }
     /**
      *
-     * @param ae
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -209,7 +198,7 @@ public class login extends JFrame implements ActionListener {
              dispose();
      }
     }
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -224,9 +213,7 @@ public class login extends JFrame implements ActionListener {
         //</editor-fold>
         
         //</editor-fold>
-        java.awt.EventQueue.invokeLater(() -> {
-            new login().setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> new login().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
